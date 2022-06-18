@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-const User = () => {
+const ViewUser = () => {
   const [user, setUser] = useState({
     name: "",
     username: "",
@@ -15,15 +15,15 @@ const User = () => {
     loadUser();
   }, []);
   const loadUser = async () => {
-    const res = await axios.get(`http://localhost:3003/users/${id}`);
+    const res = await axios.get(`http://localhost:3002/users/${id}`);
     setUser(res.data);
   };
   return (
-    <div className="container py-4">
-      <Link className="btn btn-primary" to="/">
-        back to Home
+    <div className="container py-3">
+      <Link className="btn btn-primary m-4" to="/">
+        Back Home
       </Link>
-      <h1 className="display-4">User Id: {id}</h1>
+      <h1 className="display-4">User ID:{id}</h1>
       <hr />
       <ul className="list-group w-50">
         <li className="list-group-item">name: {user.name}</li>
@@ -36,4 +36,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default ViewUser;
